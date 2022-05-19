@@ -58,3 +58,15 @@ export async function fetchItems() {
         return response.data;
     }
 }
+
+export async function togglePurchase(item) {
+    const response = await client
+        .from('shopping_list')
+        .update({ purchased: !item.purchased })
+        .match({ id: item.id });
+    if (response.error) {
+        console.error(response.error.message);
+    } else {
+        return response.data;
+    }
+}

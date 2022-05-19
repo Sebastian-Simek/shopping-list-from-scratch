@@ -8,7 +8,6 @@ export function renderList(list) {
     const button = document.createElement('button');
     button.textContent = 'Purchased';
     button.addEventListener('click', () => {
-        alert('this works');
     });
 
     if (list.purchased) {
