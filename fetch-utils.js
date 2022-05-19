@@ -41,11 +41,11 @@ export async function logout() {
 //     return error ? console.error(error) : data;
 // }
 
-export function addItems(name, qty) {
+export async function addItems(name, qty) {
     const response = await client.from('shopping_list').insert(name, qty);
     if (response.data) {
-        alert('Item added to list')
+        alert('Item added to list');
     } else {
-        console.error(response.error.message)
+        console.error(response.error.message);
     }
 }
