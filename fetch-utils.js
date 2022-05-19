@@ -49,3 +49,12 @@ export async function addItems(name, qty) {
         console.error(response.error.message);
     }
 }
+
+export async function fetchItems() {
+    const response = await client.from('shopping_list').select('*').order('name');
+    if (response.error) {
+        console.error(response.error.message);
+    } else {
+        return response.data;
+    }
+}
