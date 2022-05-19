@@ -17,7 +17,6 @@ userInput.addEventListener('submit', async (e) => {
         qty: data.get('qty'),
         name: data.get('item-name')
     };
-    console.log(newPost);
     userInput.reset();
     await addItems(newPost);
 });
