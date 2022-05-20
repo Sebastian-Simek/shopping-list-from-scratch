@@ -78,3 +78,8 @@ export async function removePurchase(userId) {
         .eq('id', userId);
     return response.data;
 }
+
+export async function deleteList() {
+    const response = await client.from('shopping_list').delete().match({ user_id: getUser().id });
+    return response.data;
+}
