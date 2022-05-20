@@ -3,3 +3,9 @@
     color: aqua;
     cursor: not-allowed;
 }
+
+#shopping-list {
+    display: flex;
+    flex-direction: column;
+}
+

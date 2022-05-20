@@ -1,6 +1,8 @@
 import { renderList } from '../render-utils.js';
 import { fetchItems, } from '../fetch-utils.js';
 
+const homeBtn = document.getElementById('home-button');
+
 const shoppingListEL = document.getElementById('shopping-list');
 export async function displayList() {
     shoppingListEL.textContent = '';
@@ -9,12 +11,14 @@ export async function displayList() {
         for (let item of data) {
             const listEl = renderList(item);
             shoppingListEL.append(listEl);
-            console.log(item);
-            
         }
 
     }
 }
+
+homeBtn.addEventListener('click', () => {
+    location.replace('../create-page');
+});
 
 
 displayList();

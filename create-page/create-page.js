@@ -1,6 +1,7 @@
 import { addItems, checkAuth, logout } from '../fetch-utils.js';
 
 const userInput = document.getElementById('item-form');
+const listBtn = document.getElementById('shopping-list');
 
 checkAuth();
 
@@ -19,4 +20,8 @@ userInput.addEventListener('submit', async (e) => {
     };
     userInput.reset();
     await addItems(newPost);
+});
+
+listBtn.addEventListener('click', () => {
+    location.replace('../display-list');
 });
