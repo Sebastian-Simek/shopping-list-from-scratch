@@ -1,20 +1,33 @@
+import { removePurchase, togglePurchase, } from './fetch-utils.js';
+import { displayList } from './display-list/display-list.js';
 
-export function renderList(list) {
+export function renderList(item) {
+    const div = document.createElement('div');
+
     const ul = document.createElement('ul');
     
     const li = document.createElement('li');
-    li.textContent = `${list.qty}: ${list.name}`; 
+    li.textContent = `${item.qty}: ${item.name}`; 
 
     const button = document.createElement('button');
-    button.textContent = 'Purchased';
-
+    button.textContent = 'Bought';
+    button.addEventListener('click', async () => {
+        await togglePurchase(item); 
+        displayList();
+    });
+    
     const button2 = document.createElement('button');
-    button2.textContent = 'Delete Item';
+    button2.textContent = 'Delete';
+    button2.addEventListener('click', async () => {
+        await removePurchase(item.id);
+        displayList();
+    });
 
-    if (list.purchased) {
+    if (item.purchased === true) {
         ul.classList.add('purchased');
     }
 
-    ul.append(li, button, button2);
-    return ul;
+    ul.append(li,);
+    div.append(ul, button, button2);
+    return div;
 }
