@@ -7,13 +7,14 @@ export function renderList(list) {
 
     const button = document.createElement('button');
     button.textContent = 'Purchased';
-    button.addEventListener('click', () => {
-    });
+
+    const button2 = document.createElement('button');
+    button2.textContent = 'Delete Item';
 
     if (list.purchased) {
         ul.classList.add('purchased');
     }
 
-    ul.append(li, button);
+    ul.append(li, button, button2);
     return ul;
 }

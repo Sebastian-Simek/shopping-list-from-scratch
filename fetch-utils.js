@@ -70,3 +70,11 @@ export async function togglePurchase(item) {
         return response.data;
     }
 }
+
+export async function removePurchase(userId) {
+    const response = await client
+        .from('shopping_list')
+        .delete()
+        .eq('id', userId);
+    return response.data;
+}
