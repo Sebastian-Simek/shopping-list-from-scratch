@@ -1,11 +1,23 @@
 .purchased {
     text-decoration: line-through;
-    color: aqua;
+    color: grey;
     cursor: not-allowed;
 }
 
-#shopping-list {
+.display {
     display: flex;
-    flex-direction: column;
 }
 
+.edit-buttons {
+    margin-left: 100px;
+    
+}
+
+.disable-button {
+    cursor: not-allowed;
+}
+
+.logout-button{
+    display: flex;
+    flex-direction: row-reverse;
+}

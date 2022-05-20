@@ -1,8 +1,9 @@
 import { renderList } from '../render-utils.js';
-import { deleteList, fetchItems, } from '../fetch-utils.js';
+import { deleteList, fetchItems, logout } from '../fetch-utils.js';
 
 const homeBtn = document.getElementById('home-button');
 const deleteBtn = document.getElementById('delete-button');
+const logoutButton = document.getElementById('log-out');
 
 const shoppingListEL = document.getElementById('shopping-list');
 export async function displayList() {
@@ -26,3 +27,7 @@ deleteBtn.addEventListener('click', async () => {
 });
 
 displayList();
+
+logoutButton.addEventListener('click', () => {
+    logout();
+});
