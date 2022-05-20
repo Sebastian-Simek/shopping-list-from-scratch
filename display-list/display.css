@@ -1,0 +1,23 @@
+.purchased {
+    text-decoration: line-through;
+    color: grey;
+    cursor: not-allowed;
+}
+
+.display {
+    display: flex;
+}
+
+.edit-buttons {
+    margin-left: 100px;
+    
+}
+
+.disable-button {
+    cursor: not-allowed;
+}
+
+.logout-button{
+    display: flex;
+    flex-direction: row-reverse;
+}

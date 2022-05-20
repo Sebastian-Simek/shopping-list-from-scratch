@@ -1,5 +1,5 @@
-const SUPABASE_URL = '';
-const SUPABASE_KEY = '';
+const SUPABASE_URL = 'https://aqordevvnruktzytnrtm.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFxb3JkZXZ2bnJ1a3R6eXRucnRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTIyOTc4ODUsImV4cCI6MTk2Nzg3Mzg4NX0.paVZTcltRhN61IqrwWNRAkNdX3pf7FOsHUYHh2DnJ_8';
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -15,7 +15,7 @@ export function checkAuth() {
 
 export function redirectIfLoggedIn() {
     if (getUser()) {
-        location.replace('./other-page');
+        location.replace('./create-page');
     }
 }
 
@@ -40,3 +40,46 @@ export async function logout() {
 // function checkError({ data, error }) {
 //     return error ? console.error(error) : data;
 // }
+
+export async function addItems(name, qty) {
+    const response = await client.from('shopping_list').insert(name, qty);
+    if (response.data) {
+        alert('Item added to list');
+    } else {
+        console.error(response.error.message);
+    }
+}
+
+export async function fetchItems() {
+    const response = await client.from('shopping_list').select('*').order('name');
+    if (response.error) {
+        console.error(response.error.message);
+    } else {
+        return response.data;
+    }
+}
+
+export async function togglePurchase(item) {
+    const response = await client
+        .from('shopping_list')
+        .update({ purchased: !item.purchased })
+        .match({ id: item.id });
+    if (response.error) {
+        console.error(response.error.message);
+    } else {
+        return response.data;
+    }
+}
+
+export async function removePurchase(itemId) {
+    const response = await client
+        .from('shopping_list')
+        .delete()
+        .eq('id', itemId);
+    return response.data;
+}
+
+export async function deleteList() {
+    const response = await client.from('shopping_list').delete().match({ user_id: getUser().id });
+    return response.data;
+}
