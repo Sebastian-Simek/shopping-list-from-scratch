@@ -1,8 +1,7 @@
 import { renderList } from '../render-utils.js';
-import { fetchItems, removePurchase, togglePurchase, } from '../fetch-utils.js';
+import { fetchItems, } from '../fetch-utils.js';
 
 const shoppingListEL = document.getElementById('shopping-list');
-
 export async function displayList() {
     shoppingListEL.textContent = '';
     const data = await fetchItems();
@@ -16,6 +15,6 @@ export async function displayList() {
 
     }
 }
-  
+
 
 displayList();
